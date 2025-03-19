@@ -1,6 +1,6 @@
 const board = document.getElementById('game-board');
 const resetButton = document.getElementById('reset-btn');
-let currentPlayer = 'X';
+let currentPlayer = 'N';
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
 
 function createBoard() {
@@ -16,7 +16,7 @@ function createBoard() {
 function handleClick(index) {
     if (gameBoard[index] === '') {
         gameBoard[index] = currentPlayer;
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        currentPlayer = currentPlayer === 'N' ? 'D' : 'N';
         createBoard();
         checkWinner();
     }
