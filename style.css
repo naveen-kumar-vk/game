@@ -6,31 +6,108 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
     margin: 0;
+    color: #333;
 }
 
 .container {
     text-align: center;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #ecf0f1;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 5px;
+    gap: 10px;
     margin: 20px auto;
-    width: 320px;
+    width: 340px;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+    animation: backgroundPop 1s ease-out infinite alternate;
+}
+
+@keyframes backgroundPop {
+    0% {
+        transform: scale(1);
+        background-color: #ecf0f1;
+    }
+    100% {
+        transform: scale(1.1);
+        background-color: #f39c12;
+    }
 }
 
 .board div {
     width: 100px;
     height: 100px;
-    background-color: #fff;
+    background-color: #ecf0f1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    border: 2px solid #000;
+    border: 2px solid #34495e;
     cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: cellPulse 0.5s ease-in-out;
+}
+
+@keyframes cellPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.board div:hover {
+    background-color: #f39c12;
+    transform: scale(1.1);
+}
+
+.board div.X {
+    color: #e74c3c;
+    animation: fadeInX 0.5s ease-out;
+}
+
+.board div.O {
+    color: #3498db;
+    animation: fadeInO 0.5s ease-out;
+}
+
+@keyframes fadeInX {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInO {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 button {
@@ -38,4 +115,22 @@ button {
     font-size: 1rem;
     cursor: pointer;
     margin-top: 20px;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
 }
